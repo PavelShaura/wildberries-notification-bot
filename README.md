@@ -24,6 +24,8 @@
 ## Деплой
 
 1. Установите Python 3.10, если он не установлен. [Python.org](https://www.python.org/downloads/)
+Создайте и заполните данными файл .env по примеру .env_example
+
 2. Склонируйте репозиторий:
      ```bash
    git clone https://github.com/PavelShaura/wildberries-notification-bot
