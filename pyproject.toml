@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "wb-bot-aiogram-3"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+sqlalchemy = "^1.3.24"
+aiogram = "3.4.1"
+pydantic = "2.4.1"
+betterlogging = "^1.0.0"
+python-dotenv = "^1.0.1"
+cachetools = "^5.3.3"
+psycopg2-binary = "^2.9.9"
+alembic = "^1.13.1"
+redis = "^5.0.2"
+flower = "^2.0.1"
+celery = "^5.3.6"
+aioredis = "^2.0.1"
+gino = "^1.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

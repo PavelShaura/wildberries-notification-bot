@@ -1,0 +1,40 @@
+version: '3.9'
+
+services:
+  pg:
+    image: postgres:13-alpine
+    container_name: pg_bot
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    restart: always
+    ports:
+      - "5432:5432"
+
+  redis:
+     image: redis:7
+     container_name: redis_bot
+     env_file:
+      - .env
+
+  bot:
+    build:
+      context: wildberries-notification-bot_aiogram3
+    env_file:
+      - .env
+    container_name: wb_bot
+    command: ["/bot/docker/app.sh"]
+    depends_on:
+      - pg
+      - redis
+
+  celery:
+    build:
+      context: wildberries-notification-bot_aiogram3
+    container_name: celery_worker_bot
+    command: ["/bot/docker/celery.sh"]
+    depends_on:
+      - redis
