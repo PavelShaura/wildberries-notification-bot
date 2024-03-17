@@ -22,7 +22,7 @@ services:
 
   bot:
     build:
-      context: wildberries-notification-bot_aiogram3
+      context: .
     env_file:
       - .env
     container_name: wb_bot
@@ -33,7 +33,7 @@ services:
 
   celery:
     build:
-      context: wildberries-notification-bot_aiogram3
+      context: .
     container_name: celery_worker_bot
     command: ["/bot/docker/celery.sh"]
     depends_on:
