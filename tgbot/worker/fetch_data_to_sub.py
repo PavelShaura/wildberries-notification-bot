@@ -1,5 +1,5 @@
 import aiohttp
-from config.config import redis_client
+from tgbot.config.config import redis_client
 from typing import Optional
 
 

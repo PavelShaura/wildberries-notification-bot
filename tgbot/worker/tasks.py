@@ -2,7 +2,7 @@ import asyncio
 
 from celery import Celery
 from celery.schedules import crontab
-from config.config import config
+from tgbot.config.config import config
 
 celery_event_loop: asyncio.AbstractEventLoop = asyncio.new_event_loop()
 

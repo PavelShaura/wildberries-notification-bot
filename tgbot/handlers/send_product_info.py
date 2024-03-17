@@ -7,9 +7,9 @@ from aiogram.filters import StateFilter
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 
-from db.pg_manager import query_manager
-from keyboards.inline import subscribe
-from worker.fetch_data_to_sub import fetch_and_send_product_info
+from tgbot.db.pg_manager import query_manager
+from tgbot.keyboards.inline import subscribe
+from tgbot.worker.fetch_data_to_sub import fetch_and_send_product_info
 
 get_product_router: Router = Router()
 

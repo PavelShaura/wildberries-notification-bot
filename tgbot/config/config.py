@@ -2,7 +2,7 @@ import aioredis
 from pydantic import BaseModel
 from pydantic.v1 import BaseSettings
 
-from redis_client.client import AsyncRedisClient
+from tgbot.redis_client.client import AsyncRedisClient
 
 
 class DbConfig(BaseModel):

@@ -2,11 +2,11 @@ import asyncio
 from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.memory import MemoryStorage
 
-from services.set_bot_commands import set_main_menu
-from services.logging_logic import register_logger, logger
-from middlewares import throttling
-from handlers import routers
-from db.database import connect_to_db, close_db_connection
+from tgbot.services.set_bot_commands import set_main_menu
+from tgbot.services.logging_logic import register_logger, logger
+from tgbot.middlewares import throttling
+from tgbot.handlers import routers
+from tgbot.db.database import connect_to_db, close_db_connection
 
 
 def register_global_middlewares(dp: Dispatcher, config) -> None:
@@ -28,7 +28,7 @@ async def main() -> None:
 
     :return: None
     """
-    from config.config import config
+    from tgbot.config.config import config
 
     register_logger()
 

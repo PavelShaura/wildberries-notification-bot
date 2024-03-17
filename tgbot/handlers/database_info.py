@@ -1,6 +1,6 @@
 import logging
 from aiogram import types, Router, F
-from config.config import redis_client
+from tgbot.config.config import redis_client
 from typing import List
 
 database_info_router: Router = Router()

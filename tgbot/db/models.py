@@ -1,4 +1,4 @@
-from db.database import db
+from tgbot.db.database import db
 from datetime import datetime
 
 

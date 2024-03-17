@@ -1,7 +1,7 @@
 from datetime import datetime
 from sqlalchemy import select
-from db.models import Query
-from db.database import db as db_instance
+from tgbot.db.models import Query
+from tgbot.db.database import db as db_instance
 from typing import Optional
 
 

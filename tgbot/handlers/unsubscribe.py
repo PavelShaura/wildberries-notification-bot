@@ -1,7 +1,7 @@
 import logging
 from aiogram import types, Router, F
-from config.config import redis_client
-from worker.notify import stop_periodic_task
+from tgbot.config.config import redis_client
+from tgbot.worker.notify import stop_periodic_task
 from typing import Optional
 
 unsubscribe_router: Router = Router()

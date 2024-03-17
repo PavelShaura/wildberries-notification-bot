@@ -1,7 +1,7 @@
 from aiogram import Bot
-from config.config import config, redis_client
-from worker.fetch_data_to_sub import fetch_and_send_product_info
-from worker.tasks import app, celery_event_loop
+from tgbot.config.config import config, redis_client
+from tgbot.worker.fetch_data_to_sub import fetch_and_send_product_info
+from tgbot.worker.tasks import app, celery_event_loop
 from typing import List, Optional
 
 

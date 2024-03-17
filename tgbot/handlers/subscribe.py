@@ -1,8 +1,8 @@
 import logging
 from aiogram import types, Router, F
-from db.pg_manager import query_manager
-from config.config import redis_client
-from worker.notify import start_periodic_task
+from tgbot.db.pg_manager import query_manager
+from tgbot.config.config import redis_client
+from tgbot.worker.notify import start_periodic_task
 from typing import Optional
 
 subscribe_router: Router = Router()

@@ -3,7 +3,7 @@ from aiogram import Router
 from aiogram.filters import CommandStart
 from aiogram.types import Message
 
-from keyboards.reply import menu_keyboard
+from tgbot.keyboards.reply import menu_keyboard
 
 command_start_router: Router = Router()
 

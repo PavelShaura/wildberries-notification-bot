@@ -1,5 +1,5 @@
 from gino import Gino
-from config.config import config
+from tgbot.config.config import config
 
 DB_URL = f"postgresql://{config.db.user}:{config.db.password}@{config.db.host}:{config.db.port}/{config.db.name}"
 
