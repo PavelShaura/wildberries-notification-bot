@@ -2,7 +2,7 @@ import logging
 from aiogram import types, Router, F
 from db.pg_manager import query_manager
 from config.config import redis_client
-from worker.notify import test_task
+from worker.notify import start_periodic_task
 from typing import Optional
 
 subscribe_router: Router = Router()
@@ -26,8 +26,8 @@ async def subscribe_to_updates(call: types.CallbackQuery) -> None:
     if product_code:
         await redis_client.add_subscribed_user(user_id)
         await redis_client.set_user_product_code(user_id, product_code)
-        await call.message.answer(f"Вы подписались на уведомления по товару: \n")
-        test_task.delay()
+        await call.message.answer(f"Вы подписались на уведомления с интервалом 5 минут, товар: \n")
+        start_periodic_task.delay()
         logging.info(
             f"User: {username}, ID: {user_id} successfully subscribed to notifications!"
         )

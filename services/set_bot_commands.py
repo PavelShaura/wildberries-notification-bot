@@ -8,7 +8,7 @@ async def set_main_menu(bot: Bot) -> None:
     Устанавливает основное меню команд для бота.
 
     :param bot: Экземпляр бота для установки команд.
-    :type bot: aiogram.Bot
+    :type bot: Bot
     :return: None
     """
     main_menu_commands: List[BotCommand] = [

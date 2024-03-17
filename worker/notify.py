@@ -32,11 +32,11 @@ def stop_periodic_task() -> None:
 
     :return: None
     """
-    app.control.revoke("add-every-minute", terminate=True)
+    app.control.revoke("add-every-five-minute", terminate=True)
 
 
 @app.task
-def test_task() -> None:
+def start_periodic_task() -> None:
     """
     Запускает периодическую задачу.
 

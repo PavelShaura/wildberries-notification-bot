@@ -15,9 +15,9 @@ app: Celery = Celery(
 app.autodiscover_tasks(["worker.notify"])
 
 app.conf.beat_schedule = {
-    "add-every-minute": {
-        "task": "worker.notify.test_task",
-        "schedule": crontab(minute="*/1"),
+    "add-every-five-minute": {
+        "task": "worker.notify.start_periodic_task",
+        "schedule": crontab(minute="*/5"),
     },
 }
 
