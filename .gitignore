@@ -60,7 +60,6 @@ venv.bak/
 .env_not_dev
 
 # Pyre type checker
-docker-compose-ci.yaml
 .pyre/
 .idea/
 .env/

@@ -1,0 +1,14 @@
+name: Build and deploy workflow
+on: [push]
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: clone code
+        uses: actions/checkout@v2
+      - name: docker build
+        run: docker build -t pshaura/wildberries-notification-bot:$GITHUB_REF_NAME-$GITHUB_RUN_ID .
+      - name: docker login
+        run: echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+      - name: docker push
+        run: docker push pshaura/wildberries-notification-bot:$GITHUB_REF_NAME-$GITHUB_RUN_ID
