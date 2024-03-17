@@ -11,7 +11,7 @@ RUN pip install --no-cache-dir poetry
 RUN poetry config virtualenvs.create false \
     && poetry install --no-interaction --no-ansi --no-root
 
-COPY wildberries-notification-bot_aiogram3 .
+COPY . .
 
 RUN chmod a+x docker/*.sh
 
