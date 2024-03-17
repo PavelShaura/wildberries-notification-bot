@@ -7,7 +7,9 @@ from typing import Optional
 unsubscribe_router: Router = Router()
 
 
-@unsubscribe_router.message(F.text == "Остановить уведомления", flags={"throttling_key": "default"})
+@unsubscribe_router.message(
+    F.text == "Остановить уведомления", flags={"throttling_key": "default"}
+)
 async def unsubscribe_from_updates(message: types.Message) -> None:
     """
     Останавливает уведомления для пользователя и удаляет его из списка подписчиков в БД Redis.

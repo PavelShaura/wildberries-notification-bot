@@ -20,6 +20,7 @@ flower = "^2.0.1"
 celery = "^5.3.6"
 aioredis = "^2.0.1"
 gino = "^1.0.1"
+black = "^24.3.0"
 
 
 [build-system]

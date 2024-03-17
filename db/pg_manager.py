@@ -19,7 +19,9 @@ class QueryManager:
         """
         self.db = db
 
-    async def save_query(self, user_id: int, product_code: str, timestamp: Optional[datetime] = None) -> None:
+    async def save_query(
+        self, user_id: int, product_code: str, timestamp: Optional[datetime] = None
+    ) -> None:
         """
         Сохраняет запрос в базе данных.
 
@@ -33,7 +35,9 @@ class QueryManager:
         """
         if timestamp is None:
             timestamp = datetime.now()
-        await Query.create(user_id=user_id, timestamp=timestamp, product_code=product_code)
+        await Query.create(
+            user_id=user_id, timestamp=timestamp, product_code=product_code
+        )
 
     async def get_latest_query_by_user_id(self, user_id: int) -> Optional[str]:
         """
@@ -44,7 +48,12 @@ class QueryManager:
         :return: Код продукта последнего запроса пользователя или None, если запросов нет.
         :rtype: Optional[str]
         """
-        query = select(Query).where(Query.user_id == user_id).order_by(Query.timestamp.desc()).limit(1)
+        query = (
+            select(Query)
+            .where(Query.user_id == user_id)
+            .order_by(Query.timestamp.desc())
+            .limit(1)
+        )
         latest_query = await self.db.first(query)
         if latest_query:
             return latest_query.product_code

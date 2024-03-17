@@ -23,15 +23,15 @@ class AsyncRedisClient(Redis):
 
     async def add_subscribed_user(self, user_id: int) -> None:
         """Добавить пользователя в подписчики."""
-        await self.redis.sadd('subscribed_users', str(user_id))
+        await self.redis.sadd("subscribed_users", str(user_id))
 
     async def set_user_product_code(self, user_id: int, product_code: str) -> None:
         """Сохранить код продукта пользователя."""
-        await self.redis.set(f'user_id:{user_id}', product_code)
+        await self.redis.set(f"user_id:{user_id}", product_code)
 
     async def remove_subscribed_user(self, user_id: int) -> None:
         """Удалить пользователя из подписчиков."""
-        await self.redis.srem('subscribed_users', str(user_id))
+        await self.redis.srem("subscribed_users", str(user_id))
 
     async def add_user_message(self, user_id: int, message: str) -> None:
         """Добавить сообщение пользователя и ограничить длину списка до 5 элементов."""
@@ -40,8 +40,8 @@ class AsyncRedisClient(Redis):
 
     async def get_subscribed_users(self) -> List[str]:
         """Получить список подписчиков."""
-        return await self.redis.smembers('subscribed_users')
+        return await self.redis.smembers("subscribed_users")
 
     async def get_user_product_code(self, user_id: int) -> Optional[str]:
         """Получить код продукта пользователя."""
-        return await self.redis.get(f'user_id:{user_id}')
+        return await self.redis.get(f"user_id:{user_id}")

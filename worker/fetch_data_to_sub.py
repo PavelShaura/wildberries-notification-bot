@@ -30,17 +30,21 @@ async def fetch_and_send_product_info(article: str, user_id: int) -> Optional[st
             rating = product.get("reviewRating")
             rating = rating if rating >= 0.1 else "Нет оценок"
             quantity = sum(
-                stock.get("qty", 0) for size in product.get("sizes", []) for stock in size.get("stocks", [])
+                stock.get("qty", 0)
+                for size in product.get("sizes", [])
+                for stock in size.get("stocks", [])
             )
 
             rub, kop = divmod(price, 100)
             price_formatted = f"<code>{rub}</code> руб. <code>{kop:02d}</code> коп."
 
-            message = f"📌  <i>Название</i>:    <b>{name}</b>\n " \
-                      f"🔢  <i>Артикул</i>:    <code>{article}</code>\n " \
-                      f"📈  <i>Цена</i>:    {price_formatted}\n " \
-                      f"🏅  <i>Рейтинг товара</i>:    <code>{rating}</code> \n " \
-                      f"🔍  <i>Количество товара на всех складах</i>:   <code>{quantity}</code>"
+            message = (
+                f"📌  <i>Название</i>:    <b>{name}</b>\n "
+                f"🔢  <i>Артикул</i>:    <code>{article}</code>\n "
+                f"📈  <i>Цена</i>:    {price_formatted}\n "
+                f"🏅  <i>Рейтинг товара</i>:    <code>{rating}</code> \n "
+                f"🔍  <i>Количество товара на всех складах</i>:   <code>{quantity}</code>"
+            )
 
             await redis_client.add_user_message(user_id, message)
             return message

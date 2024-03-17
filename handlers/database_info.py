@@ -6,8 +6,9 @@ from typing import List
 database_info_router: Router = Router()
 
 
-@database_info_router.message(F.text == "Получить информацию из БД",
-                              flags={"throttling_key": "default"})
+@database_info_router.message(
+    F.text == "Получить информацию из БД", flags={"throttling_key": "default"}
+)
 async def unsubscribe_from_updates(message: types.Message) -> None:
     """
     Обрабатывает запрос на получение информации из БД Redis и отправляет последние 5 сообщений пользователю.
@@ -24,4 +25,6 @@ async def unsubscribe_from_updates(message: types.Message) -> None:
             await message.answer(msg, parse_mode="HTML")
     except Exception as e:
         await message.answer(text="В базе данных нет информации по вашей карточке.")
-        logging.info(f"User_id: {user_id}. Error {e} when trying to get data from the database")
+        logging.info(
+            f"User_id: {user_id}. Error {e} when trying to get data from the database"
+        )

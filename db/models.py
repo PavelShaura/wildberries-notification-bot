@@ -7,14 +7,16 @@ class Query(db.Model):
     Модель запроса к базе данных PostgreSQL.
     """
 
-    __tablename__ = 'queries'
+    __tablename__ = "queries"
 
     id: int = db.Column(db.Integer, primary_key=True)
     user_id: int = db.Column(db.BigInteger)
     timestamp: datetime = db.Column(db.DateTime)
     product_code: str = db.Column(db.String)
 
-    def __init__(self, user_id: int, timestamp: datetime, product_code: str, **kwargs) -> None:
+    def __init__(
+        self, user_id: int, timestamp: datetime, product_code: str, **kwargs
+    ) -> None:
         """
         Инициализатор объекта запроса.
 

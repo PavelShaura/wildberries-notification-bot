@@ -12,10 +12,10 @@ bl.basic_colorized_config(level=log_level)
 
 def register_logger():
     """
-     Настройка логгера.
+    Настройка логгера.
 
-     :return: None
-     """
+    :return: None
+    """
     log_format = (
         "%(filename)s [LINE:%(lineno)d] #%(levelname)-6s [%(asctime)s]  %(message)s"
     )

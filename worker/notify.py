@@ -17,7 +17,9 @@ async def notify_task() -> None:
     for user_id in user_ids:
         product_code: Optional[str] = await redis_client.get_user_product_code(user_id)
         if product_code:
-            text: Optional[str] = await fetch_and_send_product_info(product_code, user_id)
+            text: Optional[str] = await fetch_and_send_product_info(
+                product_code, user_id
+            )
             if text:
                 await bot.send_message(chat_id=user_id, text=text, parse_mode="HTML")
     await bot.session.close()
@@ -30,7 +32,7 @@ def stop_periodic_task() -> None:
 
     :return: None
     """
-    app.control.revoke('add-every-minute', terminate=True)
+    app.control.revoke("add-every-minute", terminate=True)
 
 
 @app.task

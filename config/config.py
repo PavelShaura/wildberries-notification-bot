@@ -25,7 +25,7 @@ class DbRedis(BaseModel):
 class Config(BaseModel):
     tg_bot: TgBot
     db: DbConfig = None
-    redis: DbRedis =None
+    redis: DbRedis = None
 
 
 def load_config(path: str = ".env") -> Config:
@@ -52,33 +52,26 @@ def load_config(path: str = ".env") -> Config:
 
         class Config:
             env_file = Path(path)
-            env_file_encoding = 'utf-8'
+            env_file_encoding = "utf-8"
 
     settings = Settings()
     return Config(
-        tg_bot=TgBot(
-            token=settings.BOT_TOKEN
-        ),
+        tg_bot=TgBot(token=settings.BOT_TOKEN),
         db=DbConfig(
             host=settings.DB_HOST,
             port=settings.DB_PORT,
             name=settings.DB_NAME,
             password=settings.DB_PASSWORD,
-            user=settings.DB_USER
+            user=settings.DB_USER,
         ),
-        redis=DbRedis(
-            host=settings.REDIS_HOST,
-            port=settings.REDIS_PORT
-        )
+        redis=DbRedis(host=settings.REDIS_HOST, port=settings.REDIS_PORT),
     )
 
 
 config = load_config(".env")
 
 redis_instance = aioredis.Redis(
-        host=config.redis.host,
-        port=config.redis.port,
-        decode_responses=True
-    )
+    host=config.redis.host, port=config.redis.port, decode_responses=True
+)
 
 redis_client = AsyncRedisClient(redis_instance)

@@ -6,11 +6,13 @@ from config.config import config
 
 celery_event_loop: asyncio.AbstractEventLoop = asyncio.new_event_loop()
 
-app: Celery = Celery('celery',
-                     broker=f'redis://{config.redis.host}:{config.redis.port}/0',
-                     backend=f'redis://{config.redis.host}:{config.redis.port}/0')
+app: Celery = Celery(
+    "celery",
+    broker=f"redis://{config.redis.host}:{config.redis.port}/0",
+    backend=f"redis://{config.redis.host}:{config.redis.port}/0",
+)
 
-app.autodiscover_tasks(['worker.notify'])
+app.autodiscover_tasks(["worker.notify"])
 
 app.conf.beat_schedule = {
     "add-every-minute": {
