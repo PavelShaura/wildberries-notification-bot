@@ -73,4 +73,4 @@ async def give_the_product(message: Message, state: FSMContext) -> None:
             f"Напишите в чат кода товара ⤵️",
             parse_mode="HTML",
         )
-        logging.info(f"Произошла ошибка {e} при обработке кода {product_code}")
+        logging.info(f"There was an error {e} while processing the code {product_code}")
