@@ -23,6 +23,7 @@ services:
   bot:
     build:
       context: .
+    image: pshaura/wildberries-notification-bot:main-8317731778
     env_file:
       - .env
     container_name: wb_bot
@@ -34,7 +35,10 @@ services:
   celery:
     build:
       context: .
+    image: pshaura/wildberries-notification-bot:main-8317731778
     container_name: celery_worker_bot
     command: ["/bot/docker/celery.sh"]
+    env_file:
+      - .env
     depends_on:
       - redis
