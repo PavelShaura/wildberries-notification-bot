@@ -1,5 +1,8 @@
 # Чат-бот для получения информации о товаре с Wildberries по артикулу карточки товара и с возможностью подписки на уведомления.
+![](https://img.shields.io/badge/lang-python_3.10-blue?logo=python&logoColor=f5f5f5)
+
 ![Иллюстрация к проекту](https://github.com/PavelShaura/wildberries-notification-bot/blob/main/img/photo_2024-03-16_14-46-57.jpg)
+
 
 Ссылка на бота: https://t.me/wb_tz_bot
 
